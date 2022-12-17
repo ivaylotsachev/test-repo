@@ -1,0 +1,11 @@
+@import "./locomotive.scss";
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 28px;
+    p {
+        margin-bottom: 30px;
+    }
+}
