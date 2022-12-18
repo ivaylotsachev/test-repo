@@ -3,11 +3,11 @@
 @import "./grid.scss";
 @import "./typo.scss";
 
-.container {
-    max-width: 500px;
+.page {
+    max-width: 80%;
     margin: auto;
     font-size: 18px;
-    line-height: 28px;
+    border: 2px solid;
     p {
         margin-bottom: 30px;
     }

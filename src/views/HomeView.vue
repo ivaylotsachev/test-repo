@@ -1,5 +1,7 @@
 <template>
-    <h1 ref="title" class="page-title"></h1>
+    <div class="container flex flex-center">
+        <h1 ref="titleOne" class="title flex uppercase"></h1>
+    </div>
 </template>
 
 <script setup>
@@ -7,19 +9,10 @@
 import { ref, onMounted } from 'vue';
 import { lettering } from '../utils/lettering';
 
-const title = ref(null);
+const titleOne = ref(null);
 
 /* lifecycles */
 onMounted(() => {
-    lettering('welcome to', title.value);
+    lettering('welcome to', titleOne.value);
 });
 </script>
-
-<style>
-h1 {
-    display: flex;
-}
-.spacer {
-    margin: 0 5px;
-}
-</style>

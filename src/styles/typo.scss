@@ -7,4 +7,16 @@ body {
 
 .title {
     font-family: "Italiana";
+    font-size: clamp(40px, 10vw, 10vw);
+    .spacer {
+        margin: 0 20px;
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.txt-center {
+    text-align: center;
 }
