@@ -14,9 +14,3 @@
         </nav>
     </header>
 </template>
-
-<style>
-header {
-    border: 2px solid;
-}
-</style>

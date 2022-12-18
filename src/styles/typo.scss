@@ -7,7 +7,8 @@ body {
 
 .title {
     font-family: "Italiana";
-    font-size: clamp(40px, 10vw, 10vw);
+    font-size: clamp(40px, 14vw, 14vw);
+    line-height: 12vw;
     .spacer {
         margin: 0 20px;
     }
