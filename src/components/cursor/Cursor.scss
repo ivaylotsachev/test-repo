@@ -1,9 +1,14 @@
 .cursor {
     width: 30px;
     height: 30px;
-    background-color: lightcoral;
+    background-color: white;
+    mix-blend-mode: difference;
     border-radius: 50%;
     position: absolute;
     pointer-events: none;
-    mix-blend-mode: difference;
+    p {
+        color: white;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
 }

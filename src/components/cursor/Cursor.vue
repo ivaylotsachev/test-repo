@@ -19,10 +19,11 @@ watch(
     () => appStore.cursor.className,
     (value) => {
         gsap.to(cursor.value, {
-            duration: 0.8,
+            duration: 0.5,
             scale: value === 'active' ? 3 : 1,
             ease: 'power3.out',
         });
+        gsap.to('.cursor p', { scale: 0.4 });
     }
 );
 
@@ -32,7 +33,7 @@ watch(
         const { x, y } = appStore.coordinates;
 
         gsap.to(cursor.value, {
-            duration: 0.8,
+            duration: 0.5,
             top: y,
             left: x,
             ease: 'Power3.out',
@@ -42,9 +43,15 @@ watch(
 </script>
 
 <template>
-    <div ref="cursor" class="cursor" :class="appStore.cursor.className"></div>
+    <div
+        ref="cursor"
+        class="cursor flex flex-center"
+        :class="appStore.cursor.className"
+    >
+        <p>{{ appStore.cursor.text }}</p>
+    </div>
 </template>
 
-<style>
+<style lang="scss">
 @import './Cursor.scss';
 </style>

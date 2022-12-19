@@ -3,9 +3,9 @@ import { useAppStore } from '../stores/app';
 
 const appStore = useAppStore();
 /* methods */
-const handleMouseEnter = () =>
-    appStore.setCursor({ text: '', className: 'active' });
-const handleMouseLeave = () => appStore.setCursor({ className: '' });
+const handleMouseEnter = (text) =>
+    appStore.setCursor({ text, className: 'active' });
+const handleMouseLeave = () => appStore.setCursor({ text: '', className: '' });
 </script>
 
 <template>
@@ -14,15 +14,15 @@ const handleMouseLeave = () => appStore.setCursor({ className: '' });
             <ul class="main-nav-list flex p-3">
                 <li
                     class="main-nav-item mr-3 uppercase"
-                    @mouseenter="handleMouseEnter"
-                    @mouseleave="handleMouseLeave"
+                    @mouseenter="() => handleMouseEnter('home')"
+                    @mouseleave="() => handleMouseLeave()"
                 >
                     <router-link to="/" class="main-nav-link">home</router-link>
                 </li>
                 <li
                     class="main-nav-item uppercase"
-                    @mouseenter="handleMouseEnter"
-                    @mouseleave="handleMouseLeave"
+                    @mouseenter="() => handleMouseEnter('about')"
+                    @mouseleave="() => handleMouseLeave()"
                 >
                     <router-link to="/works" class="main-nav-link"
                         >works</router-link
@@ -34,8 +34,8 @@ const handleMouseLeave = () => appStore.setCursor({ className: '' });
 </template>
 
 <style lang="scss">
-header {
-    position: relative;
-    z-index: 100;
-}
+// header {
+// position: relative;
+// z-index: 100;
+// }
 </style>

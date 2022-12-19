@@ -3,6 +3,10 @@
 @import "./grid.scss";
 @import "./typo.scss";
 
+body {
+    background-color: white;
+}
+
 .page {
     max-width: 80%;
     margin: auto;
