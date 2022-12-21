@@ -3,20 +3,30 @@
 @import "./grid.scss";
 @import "./typo.scss";
 
+html {
+    scroll-behavior: initial;
+}
+
+html,
+body {
+    min-height: 100%;
+    height: auto;
+    overflow-x: hidden;
+}
+
 body {
     background-color: white;
 }
 
-.page {
-    max-width: 80%;
-    margin: auto;
-    font-size: 18px;
-    border: 2px solid;
-    p {
-        margin-bottom: 30px;
-    }
-}
-
 .mask {
     overflow: hidden;
+}
+
+.border {
+    border: 2px solid lightgreen;
+}
+
+header {
+    position: absolute;
+    z-index: 10;
 }
