@@ -1,25 +1,43 @@
 @import url(https://fonts.googleapis.com/css?family=Italiana:regular);
-@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic);
+
+@font-face {
+  font-family: "Antiqua";
+  src: local("Antiqua-Roman"),
+    url("../fonts/antiqua-roman.otf") format("opentype");
+}
 
 body {
-    font-family: "Poppins", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .title {
-    font-family: "Italiana";
-    font-size: clamp(40px, 14vw, 14vw);
-    line-height: 12vw;
-    font-weight: 100;
+  font-family: "Antiqua";
+  font-size: clamp(40px, 8vw, 8vw);
+  line-height: 9vw;
+  font-weight: 100;
 
-    .spacer {
-        margin: 0 20px;
-    }
+  span {
+    // font-family: "Lato";
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: none;
+  }
+
+  .spacer {
+    margin: 0 20px;
+  }
 }
 
 .uppercase {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .txt-center {
-    text-align: center;
+  text-align: center;
+}
+
+.inner-container {
+  align-items: stretch;
 }
