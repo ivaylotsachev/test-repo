@@ -9,24 +9,28 @@ const handleMouseLeave = () => appStore.setCursor({ text: '', className: '' });
 </script>
 
 <template>
-    <header class="main-header">
+    <header class="main-header w-100">
         <nav class="main-nav flex jcfe">
-            <ul class="main-nav-list flex p-3">
+            <ul class="main-nav-list flex pr-4">
                 <li
-                    class="main-nav-item mr-3 uppercase"
+                    class="main-nav-item p-3 uppercase"
                     @mouseenter="() => handleMouseEnter('home')"
                     @mouseleave="() => handleMouseLeave()"
                 >
-                    <router-link to="/" class="main-nav-link">home</router-link>
+                    <router-link to="/" class="main-nav-link top">
+                        <p class="top">home</p>
+                        <p class="bottom">home</p>
+                    </router-link>
                 </li>
                 <li
-                    class="main-nav-item uppercase"
+                    class="main-nav-item uppercase p-3"
                     @mouseenter="() => handleMouseEnter('about')"
                     @mouseleave="() => handleMouseLeave()"
                 >
-                    <router-link to="/works" class="main-nav-link"
-                        >works</router-link
-                    >
+                    <router-link to="/works" class="main-nav-link top">
+                        <p class="top">Works</p>
+                        <p class="bottom">Works</p>
+                    </router-link>
                 </li>
             </ul>
         </nav>
@@ -34,8 +38,38 @@ const handleMouseLeave = () => appStore.setCursor({ text: '', className: '' });
 </template>
 
 <style lang="scss">
-// header {
-// position: relative;
-// z-index: 100;
-// }
+.main-nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    p {
+        transition: all 0.3s;
+    }
+
+    .top {
+        position: relative;
+    }
+
+    .bottom {
+        position: absolute;
+        transform: translateY(50%);
+        opacity: 0;
+    }
+
+    &:hover {
+        .top {
+            transform: translateY(-50%);
+            opacity: 0;
+        }
+
+        .bottom {
+            transform: translateY(0%);
+            opacity: 1;
+        }
+    }
+}
 </style>
