@@ -5,7 +5,13 @@
                 class="titles-wrapper flex flex-center flex-column w-100-vw h-100-vh"
             >
                 <h1 ref="titleOne" class="title title-one flex uppercase">
-                    Home
+                    Creative
+                </h1>
+                <h1 ref="titleOne" class="title title-one flex uppercase">
+                    Frontend
+                </h1>
+                <h1 ref="titleOne" class="title title-one flex uppercase">
+                    Developer
                 </h1>
             </div>
         </section>

@@ -1,21 +1,11 @@
-<script setup>
-import { useAppStore } from '../stores/app';
-
-const appStore = useAppStore();
-/* methods */
-const handleMouseEnter = (text) =>
-    appStore.setCursor({ text, className: 'active' });
-const handleMouseLeave = () => appStore.setCursor({ text: '', className: '' });
-</script>
-
 <template>
     <header class="main-header w-100">
         <nav class="main-nav flex jcfe">
             <ul class="main-nav-list flex pr-4">
                 <li
                     class="main-nav-item p-3 uppercase"
-                    @mouseenter="() => handleMouseEnter('home')"
-                    @mouseleave="() => handleMouseLeave()"
+                    @mouseenter="handleMouseEnter"
+                    @mouseleave="handleMouseLeave"
                 >
                     <router-link to="/" class="main-nav-link top">
                         <p class="top">home</p>
@@ -24,8 +14,8 @@ const handleMouseLeave = () => appStore.setCursor({ text: '', className: '' });
                 </li>
                 <li
                     class="main-nav-item uppercase p-3"
-                    @mouseenter="() => handleMouseEnter('about')"
-                    @mouseleave="() => handleMouseLeave()"
+                    @mouseenter="handleMouseEnter"
+                    @mouseleave="handleMouseLeave"
                 >
                     <router-link to="/works" class="main-nav-link top">
                         <p class="top">Works</p>
@@ -36,6 +26,15 @@ const handleMouseLeave = () => appStore.setCursor({ text: '', className: '' });
         </nav>
     </header>
 </template>
+
+<script setup>
+import { useAppStore } from '../stores/app';
+
+const appStore = useAppStore();
+/* methods */
+const handleMouseEnter = () => appStore.setCursor('active');
+const handleMouseLeave = () => appStore.setCursor('');
+</script>
 
 <style lang="scss">
 .main-nav-link {

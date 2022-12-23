@@ -6,25 +6,26 @@ export const useAppStore = defineStore('app', {
             isInitialLoading: true,
             isMobile: false,
             cursor: {
-                text: '',
                 className: '',
             },
-            coordinates: { x: 0, y: 0 },
+            mouseCoordinates: { x: 0, y: 0 },
         };
     },
     actions: {
         setIsMobile(value) {
             this.isMobile = value;
         },
+
         setInitialLoading(value) {
             this.isInitialLoading = value;
         },
-        setCursor(obj) {
-            !obj.text && (obj.text = '');
-            this.cursor = { ...this.cursor, ...obj };
+
+        setCursor(className = '') {
+            this.cursor = { ...this.cursor, className };
         },
-        setCoordinates({ x, y }) {
-            this.coordinates = { x, y };
+
+        setMouseCoordinates({ x, y }) {
+            this.mouseCoordinates = { x, y };
         },
     },
 });

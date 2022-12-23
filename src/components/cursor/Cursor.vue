@@ -8,7 +8,7 @@ const cursor = ref(null);
 
 onMounted(() => {
     window.addEventListener('mousemove', (e) => {
-        appStore.setCoordinates({
+        appStore.setMouseCoordinates({
             x: e.pageX - 15 + 'px',
             y: e.pageY - 15 + 'px',
         });
@@ -16,27 +16,15 @@ onMounted(() => {
 });
 
 watch(
-    () => appStore.cursor.className,
-    (value) => {
-        gsap.to(cursor.value, {
-            duration: 0.5,
-            scale: value === 'active' ? 3 : 1,
-            ease: 'power3.out',
-        });
-        gsap.to('.cursor p', { scale: 0.4 });
-    }
-);
-
-watch(
-    () => appStore.coordinates,
+    () => appStore.mouseCoordinates,
     () => {
-        const { x, y } = appStore.coordinates;
+        const { x, y } = appStore.mouseCoordinates;
 
         gsap.to(cursor.value, {
-            duration: 0.5,
+            duration: 0.6,
             top: y,
             left: x,
-            ease: 'Power3.out',
+            ease: 'Power2.out',
         });
     }
 );
@@ -44,12 +32,10 @@ watch(
 
 <template>
     <div
-        ref="cursor"
         class="cursor flex flex-center"
+        ref="cursor"
         :class="appStore.cursor.className"
-    >
-        <p>{{ appStore.cursor.text }}</p>
-    </div>
+    ></div>
 </template>
 
 <style lang="scss">
