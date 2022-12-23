@@ -1,15 +1,26 @@
 <template>
     <app-header />
     <router-view />
-    <Cursor />
+    <Cursor v-if="!store.isMobile" />
 </template>
 
 <script setup>
+import { useAppStore } from './stores/app';
+/* utils */
 import { initLenis } from './utils/lenis';
 import resizer from './utils/resizer';
-// components
+/* components */
 import AppHeader from './components/Header.vue';
 import Cursor from './components/cursor/Cursor.vue';
+
+const store = useAppStore();
+
+/* toggle is-mobile class */
+window.innerWidth <= 1024 && store.setIsMobile(true);
+
+store.isMobile
+    ? document.querySelector('html').classList.add('js-is-mobile')
+    : document.querySelector('html').classList.remove('js-is-mobile');
 
 initLenis();
 resizer();
