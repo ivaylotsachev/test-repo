@@ -4,6 +4,7 @@ export const useAppStore = defineStore('app', {
     state: () => {
         return {
             isInitialLoading: true,
+            isMobile: false,
             cursor: {
                 text: '',
                 className: '',
@@ -12,6 +13,9 @@ export const useAppStore = defineStore('app', {
         };
     },
     actions: {
+        setIsMobile(value) {
+            this.isMobile = value;
+        },
         setInitialLoading(value) {
             this.isInitialLoading = value;
         },

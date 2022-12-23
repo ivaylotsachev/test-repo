@@ -4,29 +4,30 @@
 @import "./typo.scss";
 
 html {
-    scroll-behavior: initial;
+  scroll-behavior: initial;
 }
 
 html,
 body {
-    min-height: 100%;
-    height: auto;
-    overflow-x: hidden;
+  min-height: 100%;
+  height: auto;
+  //   overflow-x: hidden;
+  //   overflow-y: auto;
 }
 
 body {
-    background-color: white;
+  background-color: white;
 }
 
 .mask {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .border {
-    border: 2px solid lightgreen;
+  border: 2px solid lightgreen;
 }
 
-header {
-    position: absolute;
-    z-index: 10;
-}
+// header {
+//     position: absolute;
+//     z-index: 10;
+// }
