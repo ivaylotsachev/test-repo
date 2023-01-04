@@ -1,4 +1,4 @@
-export const lettering = (text, node) => {
+const lettering = (node, text) => {
     [...text].forEach((ch) => {
         const mask = document.createElement('div');
         const char = document.createElement('p');
@@ -12,3 +12,5 @@ export const lettering = (text, node) => {
         node.appendChild(mask);
     });
 };
+
+export default lettering;

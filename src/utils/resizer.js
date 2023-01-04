@@ -2,6 +2,7 @@ import { useAppStore } from '../stores/app';
 
 const resizer = () => {
     const store = useAppStore();
+    const html = document.querySelector('html');
 
     function debounce(func, time) {
         time = time || 100;
@@ -13,9 +14,13 @@ const resizer = () => {
     }
 
     function resizeContent() {
-        window.innerWidth <= 1024
-            ? store.setIsMobile(true)
-            : store.setIsMobile(false);
+        if (window.innerWidth <= 1024) {
+            store.setIsMobile(true);
+            html.classList.add('js-is-mobile');
+        } else {
+            store.setIsMobile(false);
+            html.classList.remove('js-is-mobile');
+        }
     }
 
     window.addEventListener('resize', debounce(resizeContent, 150));
