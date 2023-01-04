@@ -1,6 +1,6 @@
 <template>
-    <div class="page mt-5">
-        <section class="relative container flex flex-center">
+    <div class="page">
+        <section class="relative inner-container flex flex-center">
             <div
                 class="titles-wrapper flex flex-center flex-column w-100-vw h-100-vh"
             >

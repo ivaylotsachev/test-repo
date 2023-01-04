@@ -1,12 +1,21 @@
+.inner-container {
+  width: 80%;
+  margin: auto;
+  border: 1px solid;
+}
+
 .relative {
   position: relative;
 }
+
 .absolute {
   position: absolute;
 }
+
 .flex {
   display: flex;
 }
+
 .flex-wrap {
   flex-wrap: wrap;
 }

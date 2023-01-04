@@ -10,7 +10,7 @@ import { useAppStore } from './stores/app';
 import { initLenis } from './utils/lenis';
 import resizer from './utils/resizer';
 /* components */
-import AppHeader from './components/Header.vue';
+import AppHeader from './components/header/Header.vue';
 import Cursor from './components/cursor/Cursor.vue';
 
 const store = useAppStore();
