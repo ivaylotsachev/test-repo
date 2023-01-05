@@ -13,12 +13,16 @@ body {
 
 .title {
   font-family: "Antiqua";
-  font-size: clamp(40px, 12vw, 12vw);
-  line-height: 11vw;
+  font-size: clamp(40px, 10vw, 10vw);
+  line-height: 9vw;
   font-weight: 100;
 
   .spacer {
     margin: 0 20px;
+  }
+
+  .js-color {
+    color: rgb(193, 153, 97)
   }
 }
 
