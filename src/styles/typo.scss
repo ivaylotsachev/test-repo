@@ -11,11 +11,14 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-.title {
+.title, .transition-title {
   font-family: "Antiqua";
+  font-weight: 100;
+}
+
+.title {
   font-size: clamp(40px, 10vw, 10vw);
   line-height: 9vw;
-  font-weight: 100;
 
   .spacer {
     margin: 0 20px;

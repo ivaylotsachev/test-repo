@@ -2,6 +2,7 @@
     <app-header />
     <router-view />
     <Cursor v-if="!store.isMobile" />
+    <TransitionLayer />
 </template>
 
 <script setup>
@@ -12,6 +13,7 @@ import resizer from './utils/resizer';
 /* components */
 import AppHeader from './components/header/Header.vue';
 import Cursor from './components/cursor/Cursor.vue';
+import TransitionLayer from './components/transition-layer/TransitionLayer.vue';
 
 const store = useAppStore();
 

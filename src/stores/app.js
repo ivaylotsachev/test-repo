@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 export const useAppStore = defineStore('app', {
     state: () => {
         return {
+            activePage: '',
             isInitialLoading: true,
             isMobile: false,
             cursor: {
@@ -12,6 +13,10 @@ export const useAppStore = defineStore('app', {
         };
     },
     actions: {
+        setActivePage(value) {
+            this.activePage = value;
+        },
+
         setIsMobile(value) {
             this.isMobile = value;
         },

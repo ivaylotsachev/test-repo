@@ -1,0 +1,31 @@
+.transition-layer-container {
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+    position: fixed;
+    
+    .transition-title {
+        text-transform: uppercase;
+        font-size: clamp(40px,9vw, 9vw);
+    }
+
+    .top {
+        position: absolute;
+        background: black;
+        width: 200%;
+        height: 50vh;
+        top: -20%;
+        border-radius: 50%;
+        z-index: -1;
+    }
+    .bottom {
+        position: absolute;
+        background: black;
+        width: 200%;
+        height: 50vh;
+        bottom: -20%;
+        border-radius: 50%;
+        z-index: -1;
+    }
+}

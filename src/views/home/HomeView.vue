@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <section class="relative inner-container head-section flex flex-center">
-            <div class="titles-wrapper flex flex-column w-100-vw h-100-vh">
+            <div class="titles-wrapper flex flex-column w-100-vw">
                 <h1 ref="titleOne" class="title title-one flex uppercase"></h1>
                 <h1 ref="titleTwo" class="title title-two flex uppercase"></h1>
                 <h1
@@ -23,9 +23,11 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useAppStore } from '../../stores/app';
 import lettering from '../../utils/lettering';
 import homeAnimations from '../../animations/homepage';
 
+const store = useAppStore();
 const titleOne = ref(null);
 const titleTwo = ref(null);
 const titleThree = ref(null);
@@ -35,7 +37,9 @@ onMounted(() => {
     lettering(titleTwo.value, 'Frontend');
     lettering(titleThree.value, 'Developer');
 
-    homeAnimations.initial();
+    if (store.isInitialLoading) {
+        homeAnimations.initial(store);
+    }
 });
 </script>
 

@@ -17,6 +17,12 @@ body {
 
 body {
   background-color: white;
+  &.js-scroll-disabled {
+    overflow: hidden;
+    .cursor {
+      display: none;
+    }
+  }
 }
 
 .mask {
