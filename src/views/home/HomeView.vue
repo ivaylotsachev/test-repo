@@ -46,6 +46,7 @@
             <div
                 class="jobitem flex flex-column flex-center"
                 v-for="item in jobdata"
+                :class="`jobitem-${item.company.toLowerCase()}`"
                 :key="item.id"
             >
                 <JobItem :item="item" />
