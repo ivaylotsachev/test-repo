@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import { del } from 'vue-demi';
 
 const initial = (store) => {
     const transitionLayer = '.transition-layer-container';
@@ -30,7 +31,8 @@ const initial = (store) => {
                 },
             },
             delay
-        );
+        )
+        .from('.head-location', { opacity: 0 }, delay + 0.7);
 };
 
 export default initial;

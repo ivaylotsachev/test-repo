@@ -1,6 +1,7 @@
 .head-section {
     gap: 5vw;
-    height: 80vh;
+    height: 90vh;
+    overflow: hidden;
 }
 
 .image-container {
@@ -18,4 +19,10 @@
         height: 100%;
         object-fit: cover;
     }
+}
+
+.jobitem:not(:last-child) {
+    border-bottom: var(--mainBorder);
+    margin-bottom: 4vw;
+    padding: 3rem 0;
 }

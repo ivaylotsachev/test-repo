@@ -1,28 +1,36 @@
 <template>
-    <header class="main-header w-100">
-        <nav class="inner-container main-nav flex jcsb flex-center">
-            <p class="">Ivaylo Tsachev</p>
+    <header class="main-header inner-container">
+        <nav class="main-nav flex jcsb flex-center">
+            <p
+                class="main-nav-link magnetic"
+                data-strength="20"
+                data-strength-text="10"
+                @mousemove="handleMouseMove"
+                @mouseleave="handleMouseLeave"
+            >
+                Ivaylo Tsachev
+            </p>
             <ul class="main-nav-list flex">
-                <li class="main-nav-item p-3">
-                    <router-link
-                        to="/"
-                        class="main-nav-link top"
-                        @mouseenter="handleMouseEnter"
-                        @mouseleave="handleMouseLeave"
-                    >
-                        <p class="top">Home</p>
-                        <p class="bottom">Home</p>
+                <li
+                    class="main-nav-item p-3 magnetic"
+                    data-strength="20"
+                    data-strength-text="10"
+                    @mousemove="handleMouseMove"
+                    @mouseleave="handleMouseLeave"
+                >
+                    <router-link to="/" class="main-nav-link top">
+                        Home
                     </router-link>
                 </li>
-                <li class="main-nav-item p-3">
-                    <router-link
-                        to="/works"
-                        class="main-nav-link top"
-                        @mouseenter="handleMouseEnter"
-                        @mouseleave="handleMouseLeave"
-                    >
-                        <p class="top">Works</p>
-                        <p class="bottom">Works</p>
+                <li
+                    class="main-nav-item p-3 magnetic"
+                    data-strength="20"
+                    data-strength-text="10"
+                    @mousemove="handleMouseMove"
+                    @mouseleave="handleMouseLeave"
+                >
+                    <router-link to="/works" class="main-nav-link top">
+                        Works
                     </router-link>
                 </li>
             </ul>
@@ -32,11 +40,18 @@
 
 <script setup>
 import { useAppStore } from '../../stores/app';
+import magnetics from '../../utils/magnetics';
 
-const appStore = useAppStore();
+const store = useAppStore();
 /* methods */
-const handleMouseEnter = () => appStore.setCursor('active');
-const handleMouseLeave = () => appStore.setCursor('');
+const handleMouseMove = (event) => {
+    magnetics.magnetIn(event);
+    store.setCursor('active');
+};
+const handleMouseLeave = (event) => {
+    magnetics.magnetOut(event);
+    store.setCursor('');
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,8 @@
 @import "./reset.scss";
-@import "./locomotive.scss";
+@import "./variables.scss";
 @import "./grid.scss";
 @import "./typo.scss";
+@import "./scrollbar.scss";
 
 html {
   scroll-behavior: initial;
