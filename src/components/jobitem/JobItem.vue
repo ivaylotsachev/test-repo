@@ -26,6 +26,7 @@ import magnetics from '../../utils/magnetics';
 
 const store = useAppStore();
 const props = defineProps(['item']);
+
 /* methods*/
 const handleMouseMove = (event) => {
     magnetics.magnetIn(event);

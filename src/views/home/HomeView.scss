@@ -26,3 +26,22 @@
     margin-bottom: 4vw;
     padding: 3rem 0;
 }
+
+.to-works-section {
+    background: var(--mainBlack);
+    color: var(--mainWhite);
+    padding: 14vw 0;
+
+    .text-container {
+        gap: 5vw;
+    }
+
+    svg {
+        transform: rotate(-90deg) translateX(50%);
+        transform-origin: right;
+        max-width: 50px;
+        path {
+            stroke: white;
+        }
+    }
+}
