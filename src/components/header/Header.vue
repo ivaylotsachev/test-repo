@@ -18,9 +18,13 @@
                     @mousemove="handleMouseMove"
                     @mouseleave="handleMouseLeave"
                 >
-                    <router-link to="/" class="main-nav-link top">
+                    <a
+                        href=""
+                        class="main-nav-link top"
+                        @click.stop.prevent="handleLinkClick('home')"
+                    >
                         Home
-                    </router-link>
+                    </a>
                 </li>
                 <li
                     class="main-nav-item p-3 magnetic"
@@ -29,9 +33,13 @@
                     @mousemove="handleMouseMove"
                     @mouseleave="handleMouseLeave"
                 >
-                    <router-link to="/works" class="main-nav-link top">
+                    <a
+                        href=""
+                        @click.stop.prevent="handleLinkClick('works')"
+                        class="main-nav-link top"
+                    >
                         Works
-                    </router-link>
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -44,6 +52,10 @@ import magnetics from '../../utils/magnetics';
 
 const store = useAppStore();
 /* methods */
+const handleLinkClick = (page) => {
+    store.setRouter({ to: page, from: store.activePage });
+};
+
 const handleMouseMove = (event) => {
     magnetics.magnetIn(event);
     store.setCursor('active');

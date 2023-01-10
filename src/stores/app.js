@@ -10,9 +10,14 @@ export const useAppStore = defineStore('app', {
                 className: '',
             },
             mouseCoordinates: { x: 0, y: 0 },
+            router: { to: '', from: '' },
         };
     },
     actions: {
+        setRouter(obj) {
+            this.router = obj;
+        },
+
         setActivePage(value) {
             this.activePage = value;
         },

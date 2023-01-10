@@ -1,5 +1,5 @@
 <template>
-    <div class="page flex flex-column">
+    <div class="page home-page flex flex-column">
         <section
             class="relative inner-container head-section flex flex-center mb-5"
         >
@@ -73,8 +73,11 @@
                 @mouseleave="handleWorksMouseLeave"
                 data-strength="50"
             >
-                <router-link to="/works" class="title uppercase"
-                    >Works</router-link
+                <a
+                    href=""
+                    class="title uppercase"
+                    @click.stop.prevent="handleWorksClick()"
+                    >Works</a
                 >
                 <svg
                     width="94"
@@ -95,20 +98,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch, onBeforeUnmount, nextTick } from 'vue';
 import { useAppStore } from '../../stores/app';
+import { useRouter } from 'vue-router';
 /* utils */
 import lettering from '../../utils/lettering';
-import homeAnimations from '../../animations/homepage';
 import jobdata from '../../data/jobs';
 import magnetics from '../../utils/magnetics';
+import initLenis from '../../utils/lenis';
 /* components */
 import JobItem from '../../components/jobitem/JobItem.vue';
 
+//TODO: delete
+import gsap from 'gsap';
+
+const router = useRouter();
 const store = useAppStore();
 const titleOne = ref(null);
 const titleTwo = ref(null);
 const titleThree = ref(null);
+let lenis;
+
+store.setActivePage('home');
 
 /* methods */
 const handleWorksMouseMove = (event) => {
@@ -119,16 +130,40 @@ const handleWorksMouseLeave = (event) => {
     magnetics.magnetOut(event);
     store.setCursor('');
 };
+const handleWorksClick = () => {
+    store.setRouter({ to: 'works', from: store.activePage });
+};
 
-onMounted(() => {
+watch(
+    () => store.router,
+    () => {
+        const { to } = store.router;
+
+        if (to === 'works') {
+            console.log('home: animate to works');
+            router.push('/works');
+        }
+    }
+);
+
+onMounted(async () => {
+    await nextTick();
+
+    lenis = initLenis();
+    lenis.start();
+
     lettering(titleOne.value, 'Creative');
     lettering(titleTwo.value, 'Frontend');
     lettering(titleThree.value, 'Developer');
 
-    if (store.isInitialLoading) {
-        homeAnimations.initial(store);
+    const { to, from } = store.router;
+
+    if (from === 'works') {
+        console.log('home: animate from works here');
     }
 });
+
+onBeforeUnmount(() => lenis.destroy());
 </script>
 
 <style lang="scss" scoped>

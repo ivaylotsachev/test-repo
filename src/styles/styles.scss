@@ -12,18 +12,16 @@ html,
 body {
   min-height: 100%;
   height: auto;
-  //   overflow-x: hidden;
-  //   overflow-y: auto;
-}
-
-body {
-  background-color: white;
   &.js-scroll-disabled {
     overflow: hidden;
     .cursor {
       display: none;
     }
   }
+}
+
+body {
+  background-color: white;
 }
 
 .mask {

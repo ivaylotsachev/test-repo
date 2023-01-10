@@ -2,13 +2,12 @@
     <app-header />
     <router-view />
     <Cursor v-if="!store.isMobile" />
-    <TransitionLayer />
+    <!-- <TransitionLayer /> -->
 </template>
 
 <script setup>
 import { useAppStore } from './stores/app';
 /* utils */
-import { initLenis } from './utils/lenis';
 import resizer from './utils/resizer';
 /* components */
 import AppHeader from './components/header/Header.vue';
@@ -24,6 +23,5 @@ store.isMobile
     ? document.querySelector('html').classList.add('js-is-mobile')
     : document.querySelector('html').classList.remove('js-is-mobile');
 
-initLenis();
 resizer();
 </script>
