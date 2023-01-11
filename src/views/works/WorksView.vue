@@ -1,16 +1,27 @@
 <template>
     <div class="page works-page p-5">
-        <div class="inner-container">
-            <div class="work-item">
-                <h1 class="title my-5">works item 1</h1>
+        <section
+            class="flex flex-column flex-center inner-container w-100 h-100"
+        >
+            <div class="works-images-container" ref="imagesContainer">
+                <img
+                    v-for="item in worksdata"
+                    class="works-image w-100 h-100"
+                    :src="item.imageUrl"
+                    :alt="item.title"
+                    :key="item.id"
+                />
             </div>
-            <div class="work-item">
-                <h1 class="title my-5">works item 1</h1>
+            <div
+                class="works-items-container flex flex-center flex-column aifs"
+            >
+                <WorksListItem
+                    v-for="item in worksdata"
+                    :key="item.id"
+                    :item="item"
+                />
             </div>
-            <div class="work-item">
-                <h1 class="title my-5">works item 1</h1>
-            </div>
-        </div>
+        </section>
     </div>
 </template>
 
@@ -18,9 +29,10 @@
 import { onMounted, watch, onBeforeUnmount, nextTick } from 'vue';
 import { useAppStore } from '../../stores/app';
 import { useRouter } from 'vue-router';
+import WorksListItem from '../../components/works-list-item/WorksListItem.vue';
 /* utils */
 import initLenis from '../../utils/lenis';
-import gsap from 'gsap';
+import worksdata from '../../data/works';
 
 const store = useAppStore();
 const router = useRouter();
@@ -55,3 +67,7 @@ onMounted(async () => {
 
 onBeforeUnmount(() => lenis.destroy());
 </script>
+
+<style lang="scss">
+@import './WorksView.scss';
+</style>

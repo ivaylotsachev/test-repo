@@ -66,7 +66,7 @@
             </div>
         </section>
         <section class="contact-section mt-5 flex flex-center flex-column pt-5">
-            <h3 class="mb-4 uppercase opacity-04">Find me here :)</h3>
+            <h3 class="mb-4 uppercase opacity-04">:: Let`s work together ::</h3>
             <div class="flex flex-center flex-column text-container">
                 <a
                     href="mailto:itsa4ev@gmail.com"
@@ -89,7 +89,9 @@
                         >Mixcloud</a
                     >
                     <a
-                        href=""
+                        href="https://www.linkedin.com/in/ivaylo-tsachev-92bb36a9/"
+                        target="_blank"
+                        noopener
                         @mousemove="handleSocialMouseMove('linkedin', $event)"
                         @mouseleave="handleSocialMouseLeave"
                         data-strength="20"
@@ -97,7 +99,9 @@
                         >LinkedIn</a
                     >
                     <a
-                        href=""
+                        href="https://www.facebook.com/ivailotsachev"
+                        target="_blank"
+                        noopener
                         @mousemove="handleSocialMouseMove('facebook', $event)"
                         @mouseleave="handleSocialMouseLeave"
                         data-strength="20"

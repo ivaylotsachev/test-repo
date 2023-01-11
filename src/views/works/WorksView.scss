@@ -1,0 +1,18 @@
+.works-page {
+    height: calc(100vh - 53px);
+    .works-images-container {
+        position: absolute;
+        width: 50vw;
+        height: 30vw;
+        overflow: hidden;
+        opacity: 0.3;
+        .works-image {
+            object-fit: cover;
+        }
+    }
+    h2 {
+        font-size: clamp(30px, 7vw, 7vw);
+        text-transform: lowercase;
+        font-weight: bold;
+    }
+}
