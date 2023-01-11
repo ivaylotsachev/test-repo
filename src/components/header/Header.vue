@@ -1,15 +1,6 @@
 <template>
     <header class="main-header inner-container">
-        <nav class="main-nav flex jcsb flex-center">
-            <p
-                class="main-nav-link magnetic"
-                data-strength="20"
-                data-strength-text="10"
-                @mousemove="handleMouseMove"
-                @mouseleave="handleMouseLeave"
-            >
-                Ivaylo Tsachev
-            </p>
+        <nav class="main-nav flex jcfe flex-center">
             <ul class="main-nav-list flex">
                 <li
                     class="main-nav-item p-3 magnetic"
@@ -17,15 +8,7 @@
                     data-strength-text="10"
                     @mousemove="handleMouseMove"
                     @mouseleave="handleMouseLeave"
-                >
-                    <a
-                        href=""
-                        class="main-nav-link top"
-                        @click.stop.prevent="handleLinkClick('home')"
-                    >
-                        Home
-                    </a>
-                </li>
+                ></li>
                 <li
                     class="main-nav-item p-3 magnetic"
                     data-strength="20"
@@ -40,6 +23,20 @@
                     >
                         Works
                     </a>
+                </li>
+                <li
+                    class="main-nav-link magnetic"
+                    data-strength="20"
+                    data-strength-text="10"
+                    @mousemove="handleMouseMove"
+                    @mouseleave="handleMouseLeave"
+                >
+                    <a
+                        href=""
+                        class="main-nav-link top"
+                        @click.stop.prevent="handleLinkClick('home')"
+                        >Ivaylo Tsachev &copy;</a
+                    >
                 </li>
             </ul>
         </nav>

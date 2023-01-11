@@ -21,7 +21,7 @@
                     alt="ivaylo tsachev"
                     class="profile-image"
                 />
-                <div class="image-reveal w-100 h-100 absolute"></div>
+                <!-- <div class="image-reveal w-100 h-100 absolute"></div> -->
             </div>
         </section>
 
