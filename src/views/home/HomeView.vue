@@ -43,13 +43,15 @@
                 <span class="is-brown">solve</span>
                 product problems and build appealing usable web experiences.
             </p>
-            <p class="txt-lg">
+
+            <p class="txt-lg mb-4">
                 <span class="is-brown">PASSIONATE</span> ABOUT WEB TECHNOLOGIES.
                 I LOVE WORKING AT THE INTERSECTION OF CREATIVITY AND USER
                 FRIENDLY INTERFACES.
                 <span class="is-brown">I CREATE MEMORABLE</span> WEB
                 EXPERIENCES.
             </p>
+            <div class="separator my-5"></div>
         </section>
 
         <section class="inner-container career-section mt-5">
@@ -63,9 +65,8 @@
                 <JobItem :item="item" />
             </div>
         </section>
-
         <section class="contact-section mt-5 flex flex-center flex-column pt-5">
-            <h3 class="mb-4">Find me here :)</h3>
+            <h3 class="mb-4 uppercase opacity-04">Find me here :)</h3>
             <div class="flex flex-center flex-column text-container">
                 <a
                     href="mailto:itsa4ev@gmail.com"
@@ -130,6 +131,7 @@ import jobdata from '../../data/jobs';
 import magnetics from '../../utils/magnetics';
 import initLenis from '../../utils/lenis';
 import animations from '../../animations';
+import skewScroll from '../../utils/skewScroll';
 /* components */
 import JobItem from '../../components/jobitem/JobItem.vue';
 
@@ -181,28 +183,8 @@ onMounted(async () => {
     if (from === 'works') {
         await animations.homepage.fromWorks();
         lenis.start();
-        animations.homepage.scroll();
+        skewScroll();
     }
-
-    const skewSetter = gsap.quickSetter('section', 'skewY', 'deg');
-    const proxy = { skew: 0 };
-
-    ScrollTrigger.create({
-        onUpdate: (self) => {
-            const skew = self.getVelocity() / 300;
-
-            if (Math.abs(skew) > Math.abs(proxy.skew)) {
-                proxy.skew = skew;
-                gsap.to(proxy, {
-                    skew: 0,
-                    duration: 1,
-                    ease: 'power3',
-                    overwrite: true,
-                    onUpdate: () => skewSetter(proxy.skew),
-                });
-            }
-        },
-    });
 });
 
 onBeforeUnmount(() => lenis.destroy());
