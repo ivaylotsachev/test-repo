@@ -10,10 +10,9 @@
                     ref="titleThree"
                     class="title title-three flex uppercase"
                 ></h1>
-                <p class="head-location txt-md font-antiqua bold">
+                <p class="head-location txt-md uppercase">
                     Born in 1977, Based in
-                    <span class="font-antiqua italic">(currently)</span> Sofia,
-                    Bulgaria
+                    <span class="italic">(currently)</span> Sofia, Bulgaria
                 </p>
             </div>
             <div class="image-container relative">
@@ -30,9 +29,9 @@
             <p class="txt-lg mb-4">
                 I`ve always wanted to create new things,
                 <span class="is-brown">unique experience</span>, getting into
-                web developmen changed a lot of things for me, and since then i
-                try to my work to new horizons with each project, always putting
-                <span class="is-brown">quality</span> first.
+                web development changed a lot of things for me, and since then i
+                try to push my work to new horizons with each project, always
+                putting <span class="is-brown">quality</span> first.
             </p>
             <p class="txt-lg mb-4">
                 All this is just the beginning, and i can`t wait to push it
@@ -101,6 +100,8 @@
 import { ref, onMounted, watch, onBeforeUnmount, nextTick } from 'vue';
 import { useAppStore } from '../../stores/app';
 import { useRouter } from 'vue-router';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 /* utils */
 import lettering from '../../utils/lettering';
 import jobdata from '../../data/jobs';
@@ -109,8 +110,7 @@ import initLenis from '../../utils/lenis';
 /* components */
 import JobItem from '../../components/jobitem/JobItem.vue';
 
-//TODO: delete
-import gsap from 'gsap';
+gsap.registerPlugin(ScrollTrigger);
 
 const router = useRouter();
 const store = useAppStore();
@@ -161,6 +161,26 @@ onMounted(async () => {
     if (from === 'works') {
         console.log('home: animate from works here');
     }
+
+    const skewSetter = gsap.quickSetter('section', 'skewY', 'deg');
+    const proxy = { skew: 0 };
+
+    ScrollTrigger.create({
+        onUpdate: (self) => {
+            const skew = self.getVelocity() / 300;
+
+            if (Math.abs(skew) > Math.abs(proxy.skew)) {
+                proxy.skew = skew;
+                gsap.to(proxy, {
+                    skew: 0,
+                    duration: 1,
+                    ease: 'power3',
+                    overwrite: true,
+                    onUpdate: () => skewSetter(proxy.skew),
+                });
+            }
+        },
+    });
 });
 
 onBeforeUnmount(() => lenis.destroy());
