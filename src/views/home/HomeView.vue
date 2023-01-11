@@ -64,34 +64,56 @@
             </div>
         </section>
 
-        <section class="to-works-section mt-5 flex flex-center flex-column">
-            <p class="uppercase">Selected works</p>
-            <div
-                class="flex flex-center text-container magnetic"
-                @mousemove="handleWorksMouseMove"
-                @mouseleave="handleWorksMouseLeave"
-                data-strength="50"
-            >
+        <section class="contact-section mt-5 flex flex-center flex-column pt-5">
+            <h3 class="mb-4">Find me here :)</h3>
+            <div class="flex flex-center flex-column text-container">
                 <a
-                    href=""
-                    class="title uppercase"
-                    @click.stop.prevent="handleWorksClick()"
-                    >Works</a
+                    href="mailto:itsa4ev@gmail.com"
+                    @mousemove="handleSocialMouseMove('gmail', $event)"
+                    @mouseleave="handleSocialMouseLeave"
+                    data-strength="50"
+                    class="magnetic title gmail-link"
+                    >itsa4ev@gmail.com</a
                 >
-                <svg
-                    width="94"
-                    height="188"
-                    viewBox="0 0 94 188"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M48.1649 0.0429688V187.148M47.609 186.035C43.6048 143.062 34.281 126.175 1.47192 112.529M47.0531 187.148C51.0573 144.175 60.3811 127.289 93.1902 113.643"
-                        stroke="black"
-                        stroke-width="3"
-                    />
-                </svg>
+                <div class="separator w-100"></div>
+                <div class="contact-socials w-100 flex jcsb">
+                    <a
+                        href="https://www.mixcloud.com/ivailotsachev/"
+                        target="_blank"
+                        noopener
+                        @mousemove="handleSocialMouseMove('mixcloud', $event)"
+                        @mouseleave="handleSocialMouseLeave"
+                        data-strength="20"
+                        class="magnetic uppercase bold"
+                        >Mixcloud</a
+                    >
+                    <a
+                        href=""
+                        @mousemove="handleSocialMouseMove('linkedin', $event)"
+                        @mouseleave="handleSocialMouseLeave"
+                        data-strength="20"
+                        class="magnetic uppercase bold"
+                        >LinkedIn</a
+                    >
+                    <a
+                        href=""
+                        @mousemove="handleSocialMouseMove('facebook', $event)"
+                        @mouseleave="handleSocialMouseLeave"
+                        data-strength="20"
+                        class="magnetic uppercase bold"
+                        >Facebook</a
+                    >
+                </div>
             </div>
+            <footer class="page-footer w-100 py-3 mt-5">
+                <div class="inner-container flex jcsb">
+                    <p>
+                        Copyright &copy; {{ new Date().getFullYear() }} / Folio
+                        v.1
+                    </p>
+                    <p>Coded with love by me.</p>
+                </div>
+            </footer>
         </section>
     </div>
 </template>
@@ -123,16 +145,14 @@ let lenis;
 store.setActivePage('home');
 
 /* methods */
-const handleWorksMouseMove = (event) => {
+const handleSocialMouseMove = (classname, event) => {
+    store.setCursor(`${classname}`);
     magnetics.magnetIn(event);
-    store.setCursor('active');
 };
-const handleWorksMouseLeave = (event) => {
-    magnetics.magnetOut(event);
+
+const handleSocialMouseLeave = (event) => {
     store.setCursor('');
-};
-const handleWorksClick = () => {
-    store.setRouter({ to: 'works', from: store.activePage });
+    magnetics.magnetOut(event);
 };
 
 watch(

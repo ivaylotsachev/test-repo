@@ -17,7 +17,7 @@ const magnetIn = (event) => {
     });
 };
 
-const magnetOut = (event, store) => {
+const magnetOut = (event) => {
     gsap.to(event.currentTarget, 1.5, {
         x: 0,
         y: 0,

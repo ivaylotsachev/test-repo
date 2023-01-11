@@ -31,21 +31,24 @@
     padding: 3rem 0;
 }
 
-.to-works-section {
+.contact-section {
     background: var(--mainBlack);
     color: var(--mainWhite);
-    padding: 14vw 0;
 
     .text-container {
         gap: 5vw;
     }
 
-    svg {
-        transform: rotate(-90deg) translateX(50%);
-        transform-origin: right;
-        max-width: 50px;
-        path {
-            stroke: white;
-        }
+    .separator {
+        height: 1px;
+        background-color:rgba(255, 255, 255, 0.1);
+    }
+    .page-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: black;
+        color: white;
+        line-height: 30px;
+        p { opacity: 0.4;}
     }
 }
+
