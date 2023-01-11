@@ -21,7 +21,7 @@
                     alt="ivaylo tsachev"
                     class="profile-image"
                 />
-                <!-- <div class="image-reveal w-100 h-100 absolute"></div> -->
+                <div class="image-reveal w-100 h-100 absolute"></div>
             </div>
         </section>
 
@@ -107,6 +107,7 @@ import lettering from '../../utils/lettering';
 import jobdata from '../../data/jobs';
 import magnetics from '../../utils/magnetics';
 import initLenis from '../../utils/lenis';
+import animations from '../../animations';
 /* components */
 import JobItem from '../../components/jobitem/JobItem.vue';
 
@@ -150,7 +151,6 @@ onMounted(async () => {
     await nextTick();
 
     lenis = initLenis();
-    lenis.start();
 
     lettering(titleOne.value, 'Creative');
     lettering(titleTwo.value, 'Frontend');
@@ -159,7 +159,9 @@ onMounted(async () => {
     const { to, from } = store.router;
 
     if (from === 'works') {
-        console.log('home: animate from works here');
+        await animations.homepage.fromWorks();
+        lenis.start();
+        animations.homepage.scroll();
     }
 
     const skewSetter = gsap.quickSetter('section', 'skewY', 'deg');
