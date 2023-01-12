@@ -57,6 +57,7 @@
   }
 
   &.linkedin,
+  &.project,
   &.gmail,
   &.facebook,
   &.mixcloud {
@@ -69,4 +70,15 @@
       display: block;
     }
   }
+
+  &.project {
+    background: white;
+    border-color: #ed8b79;
+    mix-blend-mode: difference;
+    &:before {
+      content: "";
+      color: black;
+    }
+  }
+
 }
