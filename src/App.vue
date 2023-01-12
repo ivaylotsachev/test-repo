@@ -2,7 +2,7 @@
     <app-header />
     <router-view />
     <Cursor v-if="!store.isMobile" />
-    <!-- <TransitionLayer /> -->
+    <TransitionLayer />
 </template>
 
 <script setup>

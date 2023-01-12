@@ -3,7 +3,17 @@
         class="transition-layer-container flex flex-center w-100-vw h-100-vh absolute"
     >
         <div class="top"></div>
-        <div class="mask">
+        <h1
+            v-if="store.isInitialLoading"
+            class="title transition-title tr-title tr-title-one flex"
+            ref="trTitleOne"
+        ></h1>
+        <h1
+            v-if="store.isInitialLoading"
+            class="title transition-title tr-title tr-title-two flex"
+            ref="trTitleTwo"
+        ></h1>
+        <div v-else class="mask">
             <h1 class="transition-title">{{ store.activePage }}</h1>
         </div>
         <div class="bottom"></div>
@@ -11,17 +21,17 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
 import { useAppStore } from '../../stores/app';
+import lettering from '../../utils/lettering';
 
 const store = useAppStore();
-const router = useRouter();
-
-router.beforeEach((to) => store.setActivePage(to.name));
+const trTitleOne = ref(null);
+const trTitleTwo = ref(null);
 
 onMounted(() => {
-    console.error('mounted', store.activePage);
+    lettering(trTitleOne.value, 'Be.Creative');
+    lettering(trTitleTwo.value, 'Be.Different');
 });
 </script>
 

@@ -8,24 +8,17 @@
                     data-strength-text="10"
                     @mousemove="handleMouseMove"
                     @mouseleave="handleMouseLeave"
-                ></li>
-                <li
-                    class="main-nav-item p-3 magnetic"
-                    data-strength="20"
-                    data-strength-text="10"
-                    @mousemove="handleMouseMove"
-                    @mouseleave="handleMouseLeave"
                 >
                     <a
                         href=""
                         @click.stop.prevent="handleLinkClick('works')"
-                        class="main-nav-link top"
+                        class="main-nav-link"
                     >
                         Works
                     </a>
                 </li>
                 <li
-                    class="main-nav-link magnetic"
+                    class="main-nav-item py-3 magnetic"
                     data-strength="20"
                     data-strength-text="10"
                     @mousemove="handleMouseMove"
@@ -33,7 +26,7 @@
                 >
                     <a
                         href=""
-                        class="main-nav-link top"
+                        class="main-nav-link"
                         @click.stop.prevent="handleLinkClick('home')"
                         >Ivaylo Tsachev &copy;</a
                     >

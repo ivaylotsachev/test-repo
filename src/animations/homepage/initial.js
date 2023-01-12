@@ -1,38 +1,46 @@
 import gsap from 'gsap';
-import { del } from 'vue-demi';
 
 const initial = (store) => {
+    console.log('homepage initial animation');
     const transitionLayer = '.transition-layer-container';
-    const delay = 1.6;
+    const delay = 4.2;
 
-    const tl = gsap.timeline({
-        defaults: { duration: 0.8, ease: 'Power4.in', stagger: 0.02 },
-    });
-
-    gsap.set(transitionLayer, { yPercent: 130 });
-    document.body.classList.add('js-scroll-disabled');
-
-    tl.to(transitionLayer, { yPercent: 0 })
-        .to('.top', { borderRadius: 0 }, 0.5)
-        .from('.transition-title', { yPercent: 110 }, 0.2)
-        .to(transitionLayer, { yPercent: -130 }, 1.5)
-        .to('.bottom', { borderRadius: 0 }, 1.8)
-        .to('.image-reveal', { yPercent: -100 }, delay)
-        .from('.profile-image', { scale: 1.2 }, delay)
-        .from('.title-one p', { yPercent: 110 }, delay)
-        .from('.title-two p', { yPercent: 110 }, delay)
-        .from(
-            '.title-three p',
-            {
-                yPercent: 110,
-                onComplete: () => {
-                    document.body.classList.remove('js-scroll-disabled');
-                    store.setInitialLoading(false);
-                },
+    return new Promise((resolve) => {
+        const tl = gsap.timeline({
+            defaults: {
+                duration: 1.2,
+                ease: 'Power4.easeInOut',
+                stagger: 0.02,
+                delay: 0.6,
             },
-            delay
-        )
-        .from('.head-location', { opacity: 0 }, delay + 0.7);
+        });
+
+        gsap.set(transitionLayer, { yPercent: 0 });
+        document.body.classList.add('js-scroll-disabled');
+
+        tl.from('.tr-title-one p', { xPercent: 110 })
+            .to('.tr-title-one p', { xPercent: 110 }, 2)
+            .from('.tr-title-two p', { xPercent: 110 }, 2)
+            .to(transitionLayer, { yPercent: -130 }, 4)
+            .to('.bottom', { borderRadius: 0 }, 4.4)
+            .from('.title-one p', { yPercent: 110 }, delay)
+            .from('.title-two p', { yPercent: 110 }, delay)
+            .from('.title-three p', { yPercent: 110 }, delay)
+            .to('.image-reveal', { xPercent: -110 }, delay)
+            .from('.profile-image', { scale: 1.4 }, delay)
+            .from(
+                '.main-nav-item',
+                {
+                    yPercent: -200,
+                    stagger: 0.04,
+                    onComplete: () => {
+                        resolve();
+                        store.setInitialLoading(false);
+                    },
+                },
+                delay
+            );
+    });
 };
 
 export default initial;
