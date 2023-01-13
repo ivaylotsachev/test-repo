@@ -18,12 +18,7 @@ const toWorks = () => {
                 transitionLayer,
                 {
                     yPercent: 0,
-                    onComplete: () => {
-                        resolve();
-                        document
-                            .querySelector('html')
-                            .classList.remove('js-scroll-disabled');
-                    },
+                    onComplete: resolve,
                 },
                 0
             );

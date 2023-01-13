@@ -9,7 +9,7 @@
                 @mousemove="handleMouseMove"
                 @mouseleave="handleMouseLeave"
             >
-                Ivaylo Tsachev &copy
+                Ivaylo Tsachev &copy;
             </p>
             <ul class="main-nav-list flex">
                 <li

@@ -21,7 +21,18 @@ const fromHome = () => {
         })
             .to('.bottom', { borderRadius: 0 }, 0.3)
             .from('.title-grotesk', { opacity: 0, yPercent: 100 }, 0.2)
-            .from('.works-images-container', { opacity: 0, yPercent: 50 }, 0.2);
+            .from(
+                '.works-images-container',
+                {
+                    opacity: 0,
+                    yPercent: 50,
+                    onComplete: () =>
+                        document
+                            .querySelector('html')
+                            .classList.remove('js-scroll-disabled'),
+                },
+                0.2
+            );
     });
 };
 

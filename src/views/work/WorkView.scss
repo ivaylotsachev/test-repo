@@ -1,0 +1,14 @@
+.work-page {
+    height: calc(100vh - 53px);
+    .inner-container {
+        position: relative;
+    }
+    .work-image-container {
+        position: absolute;
+        opacity: 0.3;
+        z-index: -1;
+        img {
+            object-fit: cover;
+        }
+    }
+}

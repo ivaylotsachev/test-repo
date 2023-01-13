@@ -15,6 +15,7 @@ body {
   &.js-scroll-disabled {
     overflow: hidden;
     pointer-events: none;
+    cursor: none;
     .cursor {
       display: none;
     }

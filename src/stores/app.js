@@ -11,9 +11,14 @@ export const useAppStore = defineStore('app', {
             },
             mouseCoordinates: { x: 0, y: 0 },
             router: { to: '', from: '' },
+            imagesRect: {},
         };
     },
     actions: {
+        setImagesRect(obj) {
+            this.imagesRect = obj;
+        },
+
         setRouter(obj) {
             this.router = obj;
         },

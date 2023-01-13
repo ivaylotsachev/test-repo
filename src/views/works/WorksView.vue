@@ -1,5 +1,5 @@
 <template>
-    <div class="page works-page flex flex-center p-5">
+    <div class="page works-page flex flex-center">
         <section class="flex flex-center">
             <div class="works-titles-container">
                 <div
@@ -15,6 +15,7 @@
                     @mouseenter="handleTitleMouseEnter(item.id, $event)"
                     @mouseleave="handleTitleMouseLeave"
                     @mousemove="handleTitleMouseMove"
+                    @click="handleWorkItemClick(item.id)"
                 >
                     <div class="title-container flex flex-center jcfs">
                         <img
@@ -80,6 +81,12 @@ store.setActivePage('works');
 document.title = 'Tsachev Folio - Works';
 
 /* methods */
+const handleWorkItemClick = async (id) => {
+    console.log('animate from works to single work here');
+    await animations.workspage.toSingleWork();
+    router.push(`/works/${id}`);
+};
+
 const handleTitleMouseMove = (event) => magnetics.magnetIn(event);
 const handleTitleMouseLeave = (event) => {
     store.setCursor('');
@@ -113,19 +120,6 @@ watch(
     }
 );
 
-const animateImages = (e) => {
-    // gsap.to(imagesContainer.value, { autoAlpha: 0.6, duration: 1 });
-    // const containerRect = imagesContainer.value.getBoundingClientRect();
-    // const left = e.pageX - containerRect.width / 2 + 'px';
-    // const top = e.pageY - containerRect.height / 2 + 'px';
-    // gsap.to(imagesContainer.value, {
-    //     left,
-    //     top,
-    //     duration: 0.4,
-    //     ease: 'Power3.easeOut',
-    // });
-};
-
 onMounted(async () => {
     await nextTick();
 
@@ -136,6 +130,7 @@ onMounted(async () => {
 
     if (store.isInitialLoading) {
         console.log('works initial animation here');
+        gsap.to('.transition-layer-container', { yPercent: 130 });
     } else {
         if (from === 'home') {
             console.log('works: animate from home here');
@@ -143,12 +138,13 @@ onMounted(async () => {
         }
     }
 
-    window.addEventListener('mousemove', animateImages);
+    const { bottom, height, left, right, top, width, x, y } =
+        imagesContainer.value.getBoundingClientRect();
+    store.setImagesRect({ bottom, height, left, right, top, width, x, y });
 });
 
 onBeforeUnmount(() => {
     lenis?.destroy();
-    window.removeEventListener('mousemove', animateImages);
 });
 </script>
 
