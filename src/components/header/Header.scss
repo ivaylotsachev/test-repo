@@ -2,6 +2,29 @@
 //     border-bottom: var(--mainBorder)
 // }
 
+.main-nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    &:after {
+        content: "";
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: black;
+        opacity: 0;
+        transition: opacity 2s
+    }
+
+    &.is-active {
+        &:after {
+            opacity: 1;
+        }
+    }
+}
 .main-nav-link {
     position: relative;
     display: flex;

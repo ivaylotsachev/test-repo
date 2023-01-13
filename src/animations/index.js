@@ -1,3 +1,4 @@
 import homepage from './homepage';
+import workspage from './workspage';
 
-export default { homepage };
+export default { homepage, workspage };

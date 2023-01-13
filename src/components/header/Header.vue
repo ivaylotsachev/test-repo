@@ -1,9 +1,35 @@
 <template>
-    <header class="main-header inner-container">
-        <nav class="main-nav flex jcfe flex-center">
+    <header class="main-header inner-container py-3">
+        <nav class="main-nav flex jcsb flex-center">
+            <p
+                v-if="!store.isMobile"
+                class="js-animated-link main-nav-item bold uppercase magnetic"
+                data-strength="20"
+                data-strength-text="10"
+                @mousemove="handleMouseMove"
+                @mouseleave="handleMouseLeave"
+            >
+                Ivaylo Tsachev &copy
+            </p>
             <ul class="main-nav-list flex">
                 <li
-                    class="main-nav-item p-3 magnetic"
+                    :class="store.activePage === 'home' && 'is-active'"
+                    class="main-nav-item magnetic mr-4"
+                    data-strength="20"
+                    data-strength-text="10"
+                    @mousemove="handleMouseMove"
+                    @mouseleave="handleMouseLeave"
+                >
+                    <a
+                        href=""
+                        class="main-nav-link"
+                        @click.stop.prevent="handleLinkClick('home')"
+                        >home</a
+                    >
+                </li>
+                <li
+                    :class="store.activePage === 'works' && 'is-active'"
+                    class="main-nav-item magnetic"
                     data-strength="20"
                     data-strength-text="10"
                     @mousemove="handleMouseMove"
@@ -16,20 +42,6 @@
                     >
                         Works
                     </a>
-                </li>
-                <li
-                    class="main-nav-item py-3 magnetic"
-                    data-strength="20"
-                    data-strength-text="10"
-                    @mousemove="handleMouseMove"
-                    @mouseleave="handleMouseLeave"
-                >
-                    <a
-                        href=""
-                        class="main-nav-link"
-                        @click.stop.prevent="handleLinkClick('home')"
-                        >Ivaylo Tsachev &copy;</a
-                    >
                 </li>
             </ul>
         </nav>

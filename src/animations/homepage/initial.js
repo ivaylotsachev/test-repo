@@ -2,8 +2,12 @@ import gsap from 'gsap';
 
 const initial = (store) => {
     console.log('homepage initial animation');
+
+    const html = document.querySelector('html');
     const transitionLayer = '.transition-layer-container';
     const delay = 4.2;
+
+    html.classList.add('js-scroll-disabled');
 
     return new Promise((resolve) => {
         const tl = gsap.timeline({
@@ -16,7 +20,6 @@ const initial = (store) => {
         });
 
         gsap.set(transitionLayer, { yPercent: 0 });
-        document.body.classList.add('js-scroll-disabled');
 
         tl.from('.tr-title-one p', { xPercent: 110 })
             .to('.tr-title-one p', { xPercent: 110 }, 2)
@@ -36,6 +39,7 @@ const initial = (store) => {
                     onComplete: () => {
                         resolve();
                         store.setInitialLoading(false);
+                        html.classList.remove('js-scroll-disabled');
                     },
                 },
                 delay

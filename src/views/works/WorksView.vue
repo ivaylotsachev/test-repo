@@ -25,7 +25,7 @@
                         <div class="mask order-mask">
                             <p class="mr-3 item-order">#{{ index + 1 }}</p>
                         </div>
-                        <div>
+                        <div class="mask">
                             <h2 class="title title-grotesk">
                                 {{ item.title }}
                             </h2>
@@ -68,7 +68,7 @@ import gsap from 'gsap';
 import initLenis from '../../utils/lenis';
 import worksdata from '../../data/works';
 import magnetics from '../../utils/magnetics';
-import gsapCore from 'gsap/gsap-core';
+import animations from '../../animations';
 
 const store = useAppStore();
 const router = useRouter();
@@ -77,6 +77,7 @@ const imagesContainer = ref(null);
 let lenis;
 
 store.setActivePage('works');
+document.title = 'Tsachev Folio - Works';
 
 /* methods */
 const handleTitleMouseMove = (event) => magnetics.magnetIn(event);
@@ -101,11 +102,12 @@ const handleTitleMouseEnter = (name, event) => {
 
 watch(
     () => store.router,
-    () => {
+    async () => {
         const { to } = store.router;
 
         if (to === 'home') {
-            console.log('works: animate to home here');
+            store.setActivePage('home');
+            await animations.workspage.toHome();
             router.push('/');
         }
     }
@@ -132,15 +134,20 @@ onMounted(async () => {
 
     const { to, from } = store.router;
 
-    if (from === 'home') {
-        console.log('works: animate from home here');
+    if (store.isInitialLoading) {
+        console.log('works initial animation here');
+    } else {
+        if (from === 'home') {
+            console.log('works: animate from home here');
+            await animations.workspage.fromHome();
+        }
     }
 
     window.addEventListener('mousemove', animateImages);
 });
 
 onBeforeUnmount(() => {
-    lenis.destroy();
+    lenis?.destroy();
     window.removeEventListener('mousemove', animateImages);
 });
 </script>
