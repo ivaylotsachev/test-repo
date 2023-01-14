@@ -84,7 +84,8 @@ document.title = 'Tsachev Folio - Works';
 const handleWorkItemClick = async (id) => {
     console.log('animate from works to single work here');
     await animations.workspage.toSingleWork();
-    router.push(`/works/${id}`);
+    store.setActivePage('work');
+    router.push(`/${id}`);
 };
 
 const handleTitleMouseMove = (event) => magnetics.magnetIn(event);
