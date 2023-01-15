@@ -1,5 +1,5 @@
 <template>
-    <div class="page works-page flex flex-center">
+    <div class="page works-page flex flex-center border">
         <section class="flex flex-center">
             <div class="works-titles-container">
                 <div
@@ -66,6 +66,7 @@ import { useAppStore } from '../../stores/app';
 import { useRouter } from 'vue-router';
 import gsap from 'gsap';
 /* utils */
+import { setElementHeight } from '../../utils/utils';
 import initLenis from '../../utils/lenis';
 import worksdata from '../../data/works';
 import magnetics from '../../utils/magnetics';
@@ -89,10 +90,12 @@ const handleWorkItemClick = async (id) => {
 };
 
 const handleTitleMouseMove = (event) => magnetics.magnetIn(event);
+
 const handleTitleMouseLeave = (event) => {
     store.setCursor('');
     magnetics.magnetOut(event);
 };
+
 const handleTitleMouseEnter = (name, event) => {
     store.setCursor('project');
     const dataname = event.target.getAttribute('data-name');
@@ -124,14 +127,16 @@ watch(
 onMounted(async () => {
     await nextTick();
 
+    setElementHeight('.works-page');
+
     lenis = initLenis();
     lenis.scrollTo('html');
 
     const { to, from } = store.router;
 
     if (store.isInitialLoading) {
-        console.log('works initial animation here');
-        gsap.to('.transition-layer-container', { yPercent: 130 });
+        await animations.workspage.initial();
+        store.setInitialLoading(false);
     } else {
         if (from === 'home') {
             console.log('works: animate from home here');

@@ -10,7 +10,7 @@ const jobs = [
         id: 1,
         year: `2018 - ${new Date().getFullYear()}`,
         company: 'Evolution',
-        position: 'Senior Frontend Developer',
+        position: 'Javascript Frontend Developer',
         website: 'https://www.redtiger.com/',
         isCurrent: true,
     },

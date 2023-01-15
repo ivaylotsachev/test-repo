@@ -44,34 +44,14 @@ onMounted(() => {
         yPercent: 130,
     });
     document.querySelector('html').classList.remove('js-scroll-disabled');
-
-    gsap.to('.work-image-container', {
-        width: '100%',
-        height: '50vh',
-        opacity: 1,
-        delay: 0.6,
-        onComplete: () => {
-            gsap.from('h1', { autoAlpha: 0 });
-            document
-                .querySelector('html')
-                .classList.remove('js-scroll-disabled');
-        },
-    });
 });
 </script>
 
 <template>
     <div class="page work-page flex flex-center flex-column">
-        <section class="flex flex-center flex-column h-100">
-            <h1 class="title">{{ item.title }}</h1>
-            <div class="work-image-container" :style="styles">
-                <img
-                    class="w-100 h-100"
-                    :src="item.imageUrl"
-                    :alt="item.title"
-                />
-            </div>
-        </section>
+        <div class="work-image-container" :style="styles">
+            <img class="w-100 h-100" :src="item.imageUrl" :alt="item.title" />
+        </div>
     </div>
 </template>
 

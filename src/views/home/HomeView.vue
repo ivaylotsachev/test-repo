@@ -119,6 +119,15 @@
                     <p>Coded with love by me.</p>
                 </div>
             </footer>
+            <div
+                class="flex flex-center uppercase goto-top magnetic"
+                data-strength="20"
+                @click="gotoTop"
+                @mouseenter="handleGotoTopEnter"
+                @mouseleave="handleGotoTopLeave"
+            >
+                top
+            </div>
         </section>
     </div>
 </template>
@@ -136,6 +145,7 @@ import magnetics from '../../utils/magnetics';
 import initLenis from '../../utils/lenis';
 import animations from '../../animations';
 import skewScroll from '../../utils/skewScroll';
+import { setElementHeight } from '../../utils/utils';
 /* components */
 import JobItem from '../../components/jobitem/JobItem.vue';
 
@@ -152,6 +162,21 @@ store.setActivePage('home');
 document.title = 'Tsachev Folio :: Home';
 
 /* methods */
+const handleGotoTopEnter = (event) => {
+    store.setCursor('active');
+    magnetics.magnetIn(event);
+};
+const handleGotoTopLeave = (event) => {
+    store.setCursor('');
+    magnetics.magnetOut(event);
+};
+const gotoTop = () => {
+    lenis.scrollTo('html', {
+        offset: 0,
+        duration: 2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+};
 const handleSocialMouseMove = (classname, event) => {
     store.setCursor(`${classname}`);
     magnetics.magnetIn(event);
@@ -179,10 +204,12 @@ onMounted(async () => {
     await nextTick();
 
     lenis = initLenis();
+    lenis.scrollTo('html');
 
     lettering(titleOne.value, 'Creative');
     lettering(titleTwo.value, 'Frontend');
     lettering(titleThree.value, 'Developer');
+    setElementHeight('.home-page');
 
     const { to, from } = store.router;
 

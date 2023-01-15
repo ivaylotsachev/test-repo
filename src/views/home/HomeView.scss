@@ -41,6 +41,7 @@
 .contact-section {
     background: var(--mainBlack);
     color: var(--mainWhite);
+    position: relative;
 
     .text-container {
         gap: 5vw;
@@ -60,6 +61,18 @@
             text-transform: uppercase;
             font-size: 12px;
         }
+    }
+
+    .goto-top {
+        position: absolute;
+        right: 5%;
+        width: 70px;
+        height: 70px;
+        background: white;
+        color: black;
+        border-radius: 50%;
+        font-weight: bold;
+        cursor: pointer;
     }
 }
 
