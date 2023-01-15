@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, computed, watch } from 'vue';
+import { onMounted, computed, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAppStore } from '../../stores/app';
 import gsap from 'gsap';
@@ -32,16 +32,26 @@ watch(
             router.push('/');
         }
         if (to === 'works') {
-            store.setActivePage('home');
+            store.setActivePage('works');
             router.push('/works');
         }
     }
 );
 
-onMounted(() => {
+onMounted(async () => {
+    await nextTick();
     // TODO: delete gsap when animation is complete
     gsap.set('.transition-layer-container', {
         yPercent: 130,
+        display: 'none',
+    });
+
+    gsap.to('.work-image-container', {
+        width: '100vw',
+        height: '100vh',
+        top: 0,
+        left: 0,
+        autoAlpha: 1,
     });
     document.querySelector('html').classList.remove('js-scroll-disabled');
 });

@@ -1,11 +1,11 @@
 <template>
-    <div class="page works-page flex flex-center border">
+    <div class="page works-page flex flex-center">
         <section class="flex flex-center">
             <div class="works-titles-container">
                 <div
+                    v-for="(item, index) in worksdata"
                     class="work-title-item magnetic"
                     :class="'item-' + item.id"
-                    v-for="(item, index) in worksdata"
                     :key="item.id"
                     :item="item"
                     :data-name="item.id"
@@ -18,11 +18,11 @@
                     @click="handleWorkItemClick(item.id)"
                 >
                     <div class="title-container flex flex-center jcfs">
-                        <img
+                        <!-- <img
                             v-if="store.isMobile"
                             :src="item.imageUrl"
                             alt=""
-                        />
+                        /> -->
                         <div class="mask order-mask">
                             <p class="mr-3 item-order">#{{ index + 1 }}</p>
                         </div>
@@ -143,6 +143,8 @@ onMounted(async () => {
             await animations.workspage.fromHome();
         }
     }
+
+    lenis.start();
 
     const { bottom, height, left, right, top, width, x, y } =
         imagesContainer.value.getBoundingClientRect();
